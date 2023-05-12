@@ -1,4 +1,4 @@
-# Share Prompt App
+# Share Prompt App / Promptopia
 
 The Share Prompt App is a web application that allows users to share creative writing prompts with others. It provides a platform for users to create, browse, and interact with writing prompts, fostering creativity and inspiration.
 
@@ -18,7 +18,7 @@ The Share Prompt App is a web application that allows users to share creative wr
 
 **Frontend:** The frontend of the Share Prompt App is built using React.js, Next.js, and Tailwind CSS. It provides an interactive user interface for creating, browsing, and interacting with prompts.
 
-**Backend:** The backend is powered by Node.js and Express.js, with MongoDB as the database using Mongoose for data modeling and management. The backend handles API requests, authentication, and data storage.
+**Backend:** The backend is powered by Node.js, with MongoDB as the database using Mongoose for data modeling and management. The backend handles API requests, authentication, and data storage.
 
 **Authentication:** User authentication is implemented using NextAuth.js, which provides easy integration with popular authentication providers like Google, Facebook, and Twitter.
 

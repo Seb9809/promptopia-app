@@ -1,4 +1,5 @@
 "use client";
+
 import { useState, useEffect } from "react";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
@@ -11,7 +12,7 @@ const MyProfile = () => {
   const { data: session } = useSession(); // Retrieve the session data using NextAuth's useSession hook
 
   const [myPosts, setMyPosts] = useState([]); // State variable to hold the posts data
-
+  
   useEffect(() => {
     const fetchPosts = async () => {
       const response = await fetch(`/api/users/${session?.user.id}/posts`); // Fetch posts data for the current user

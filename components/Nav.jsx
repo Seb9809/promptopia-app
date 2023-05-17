@@ -5,6 +5,8 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import { signIn, signOut, useSession, getProviders } from "next-auth/react";
 
+const signOutUrl = process.env.NEXT_PUBLIC_AUTH0_SIGNOUT_CALLBACK_URL;
+
 //Renders the navigation bar
 const Nav = () => {
   const { data: session } = useSession();
@@ -14,11 +16,12 @@ const Nav = () => {
   const [toggleDropdown, setToggleDropdown] = useState(false);
 
   useEffect(() => {
-    (async () => {
+    const setUpProviders = async () => {
       // Fetch providers
       const res = await getProviders();
       setProviders(res);
-    })();
+    };
+    setUpProviders();
   }, []);
 
   return (
@@ -46,7 +49,12 @@ const Nav = () => {
             </Link>
 
             {/* Sign Out */}
-            <button type="button" onClick={signOut} className="outline_btn">
+
+            <button
+              type="button"
+              className="outline_btn"
+              onClick={() => signOut({ callbackUrl: signOutUrl })}
+            >
               Sign Out
             </button>
 
@@ -117,11 +125,12 @@ const Nav = () => {
                   Create Prompt
                 </Link>
                 {/* Sign Out */}
+
                 <button
                   type="button"
                   onClick={() => {
                     setToggleDropdown(false);
-                    signOut();
+                    signOut({ callbackUrl: signOutUrl });
                   }}
                   className="mt-5 w-full black_btn"
                 >
